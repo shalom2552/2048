@@ -8,6 +8,9 @@ Game::Game(std::size_t size)
 
 void Game::run()
 {
-    m_board.render();
+    while (1) {
+        m_board.render();
+
+    }
 }
 
