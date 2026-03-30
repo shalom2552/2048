@@ -2,7 +2,6 @@
 #include "../../inc/constants.hpp"
 
 #include <termios.h>
-#include <csignal>      // 
 #include <cstdlib>      // atexit
 #include <unistd.h>     // read, STDIN_FILENO
 #include <signal.h>     // signal, SIGINT
@@ -23,6 +22,7 @@ void input_setup()
     raw.c_lflag &= ~(ECHO | ICANON);    // disable echo & icanon
     raw.c_cc[VMIN]  = 1;                // wait for at least 1 input
     raw.c_cc[VTIME] = 0;                // wait indefintly
+    tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
 }
 
 void cleanup()

@@ -32,49 +32,51 @@ void print_char(std::string const& c)
 void print_top_border(std::size_t size)
 {
     size = get_printable_size(size);
-    print_char(BOX_TL);
+    print_char(ANSII_BOX_TL);
     for (std::size_t i = 1; i < size - 1; ++i) {
-        if (i % 4 == 0) print_char(BOX_TM);
-        else print_char(BOX_HZ);
+        if (i % 4 == 0) print_char(ANSII_BOX_TM);
+        else print_char(ANSII_BOX_HZ);
     }
-    print_char(BOX_TR);
+    print_char(ANSII_BOX_TR);
     print_char("\n");
 }
 
 void print_row(std::size_t size, std::vector<Cell> const& row)
 {
     size = get_printable_size(size);
-    print_char(BOX_VR);
+    print_char(ANSII_BOX_VR);
     for (std::size_t i = 1; i < size - 1; ++i) {
-        if ((i + 2) % 4 == 0) print_char(std::to_string(row[i % 4].value));
-        else if (i % 4 == 0) print_char(BOX_VR);
+        std::string value = std::to_string(row[i % 4].value);
+        if (value == "0") value = " ";
+        if ((i + 2) % 4 == 0) print_char(value);
+        else if (i % 4 == 0) print_char(ANSII_BOX_VR);
         else print_char(" ");
     }
-    print_char(BOX_VR);
+    print_char(ANSII_BOX_VR);
     print_char("\n");
 }
 
 void print_border_row(std::size_t size)
 {
     size = get_printable_size(size);
-    print_char(BOX_VR);
+    print_char(ANSII_BOX_VR);
     for (std::size_t i = 1; i < size - 1; ++i) {
-        if (i % 4 == 0) print_char(BOX_CR);
-        else print_char(BOX_HZ);
+        if (i % 4 == 0) print_char(ANSII_BOX_CR);
+        else print_char(ANSII_BOX_HZ);
     }
-    print_char(BOX_VR);
+    print_char(ANSII_BOX_VR);
     print_char("\n");
 }
 
 void print_bottom_border(std::size_t size)
 {
     size = get_printable_size(size);
-    print_char(BOX_BL);
+    print_char(ANSII_BOX_BL);
     for (std::size_t i = 1; i < size - 1; ++i) {
-        if (i % 4 == 0) print_char(BOX_BM);
-        else print_char(BOX_HZ);
+        if (i % 4 == 0) print_char(ANSII_BOX_BM);
+        else print_char(ANSII_BOX_HZ);
     }
-    print_char(BOX_BR);
+    print_char(ANSII_BOX_BR);
     print_char("\n");
 }
 

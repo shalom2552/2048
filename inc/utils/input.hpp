@@ -9,7 +9,7 @@ enum InputEvent {
     INPUT_QUIT,
 };
 
-void input_steup();
+void input_setup();
 
 void cleanup();
 
