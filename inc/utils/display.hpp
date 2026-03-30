@@ -8,6 +8,8 @@
 
 void print_board(Board const& Board);
 
+std::size_t get_printable_size(std::size_t size);
+
 void print_char(std::string c);
 
 void print_top_boarder(std::size_t size);
