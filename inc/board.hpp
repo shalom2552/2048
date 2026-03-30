@@ -18,6 +18,13 @@ public:
 
     const std::vector<std::vector<Cell>>& get_board() const;
 
+    std::size_t count_empty_cells() const;
+
+    void generate_new_cell();
+
+private:
+    void place_empty_cell(std::size_t i);
+
 private:
     std::size_t m_size;
     std::vector<std::vector<Cell>> m_board;

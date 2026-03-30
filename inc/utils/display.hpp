@@ -6,6 +6,8 @@
 #include <cstddef>  // std::size_t
 #include <string>   // std::string
 
+void clear_screen();
+
 void print_board(Board const& Board);
 
 std::size_t get_printable_size(std::size_t size);
