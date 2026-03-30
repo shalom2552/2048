@@ -10,13 +10,17 @@ Board::Board(std::size_t size)
 {
 }
 
-std::size_t Board::size() const
-{
-    return m_size;
-}
-
 void Board::render()
 {
     print_board(*this);
 }
 
+std::size_t Board::size() const
+{
+    return m_size;
+}
+
+const std::vector<std::vector<Cell>>& Board::get_board() const
+{
+    return m_board;
+}

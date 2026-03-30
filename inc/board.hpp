@@ -13,7 +13,10 @@ public:
     explicit Board(std::size_t size);
 
     void render();
+
     std::size_t size() const;
+
+    const std::vector<std::vector<Cell>>& get_board() const;
 
 private:
     std::size_t m_size;
