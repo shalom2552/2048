@@ -17,14 +17,22 @@ private:
     /* generate value 2 in a random empty cell */
     void generate_new_cell();
 
-    /* move dispatcher */
+    /* input dispatcher */
     void handle_input(InputEvent input);
 
+    /* update the board based on the user move */
     void handle_move(InputEvent driection);
+
+    /* call end game */
     void handle_quit();
 
+    /* return true if there is no valid move */
     bool is_game_over();
+
+    /* print game results and end the game */
     void handle_game_over();
+
+    /* terminates the game */
     void end_game();
 
 private:

@@ -22,6 +22,7 @@ void Game::run()
         InputEvent input = get_input();
         handle_input(input);
 
+        // skip new cell generation if no board change
         if (!m_board.changed()) continue;
         m_board.generate_new_cell();
         m_board.render();
