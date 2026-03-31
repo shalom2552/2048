@@ -119,28 +119,34 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
     if ( !forward )
         std::reverse(line.begin(), line.end());
 
-    bool merged = false;
     std::vector<int> result(m_size, 0);
-    std::size_t new_index = 0;
+    std::size_t write = 0;
+    bool merged = false;    // so we dont merge merged
 
     for (int row = 0; row < (int)m_size; ++row) {
         int value = line[row];
         if (value == 0) continue;
 
-        if (new_index == 0) {
-            result[new_index++] = value;
-        } else if ( !merged && value == result[new_index - 1] ) {
-            result[new_index - 1] += value;
+        // just write first value, nothing to compare
+        if (write == 0) {
+            result[write++] = value;
+
+        } else if ( !merged && value == result[write - 1] ) {
+            result[write - 1] += value;
+
         } else {
-            result[new_index++] = value;
+            result[write++] = value;
             merged = false;
         }
     }
-    if ( !forward )
-        std::reverse(result.begin(), result.end());
 
-    if (line != result)
+    if (line != result) {
         m_changed = true;
+    }
+
+    if ( !forward ) {
+        std::reverse(result.begin(), result.end());
+    }
 
     line = result;
 }
