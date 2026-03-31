@@ -1,6 +1,8 @@
 #include "../inc/game.hpp"
 #include "../inc/types.hpp"
 #include "../inc/input.hpp"
+#include "../inc/display/board_display.hpp"
+#include "../inc/display/common_display.hpp"
 
 #include <cstddef>      // std::size_t
 #include <cstdlib>      // rand
@@ -18,9 +20,11 @@ Game::Game(std::size_t size)
 void Game::run()
 {
     m_board->generate_new_cell();
-    m_board->render();
+    render_game();
+
     while (m_running) {
         if (is_game_over()) handle_game_over();
+
         InputEvent input = get_input();
         handle_input(input);
 
@@ -60,8 +64,8 @@ void Game::update_score()
 
 void Game::render_game()
 {
-
-    m_board->render();
+    clear_screen();
+    print_board(*m_board);
 }
 
 void Game::handle_quit()

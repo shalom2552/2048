@@ -1,6 +1,7 @@
 CXXFLAGS = -std=c++17 -Wall -Wextra -pedantic
 
-SRC = main.cpp ./src/board.cpp ./src/game.cpp ./src/display/board_display.cpp ./src/input.cpp
+SRC = main.cpp ./src/board.cpp ./src/game.cpp ./src/input.cpp 
+SRC += ./src/display/board_display.cpp ./src/display/common_display.cpp ./src/display/hud_display.cpp
 OBJ = $(SRC:.cpp=.o)
 TRG = game
 

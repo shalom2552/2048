@@ -15,9 +15,6 @@ class Board {
 public:
     explicit Board(std::size_t size);
 
-    /* display the board */
-    void render();
-
     /* return the size of the board (#rows * #cols) */
     std::size_t size() const;
 

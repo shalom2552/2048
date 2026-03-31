@@ -1,5 +1,4 @@
 #include "../inc/board.hpp"
-#include "../inc/display/board_display.hpp"
 
 #include <algorithm>    // std::reverse
 #include <cstddef>      // std::size_t
@@ -10,12 +9,6 @@ Board::Board(std::size_t size)
     , m_board(size, std::vector<Cell>(size))
     , m_changed(false)
 {
-}
-
-void Board::render()
-{
-    clear_screen();
-    print_board(*this);
 }
 
 std::size_t Board::size() const
