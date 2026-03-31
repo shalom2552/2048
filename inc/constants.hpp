@@ -3,6 +3,7 @@
 
 #include <string>       // std::string
 
+// clear screen
 const std::string ANSI_CLEAR     = "\033[H\033[2J\033[3J";
 
 // Box unicodes
@@ -20,6 +21,9 @@ const std::string ANSII_BOX_HZ  = "━";
 
 const std::string ANSII_BOX_MR  = "┫";
 const std::string ANSII_BOX_ML  = "┣";
+
+const int BOX_CELL_WIDTH = 7;
+const int BOX_LEFT_PADNG = 20;
 
 //input keys
 const char KEY_UP        = 'w';

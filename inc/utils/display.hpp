@@ -13,6 +13,8 @@ void print_char(std::string const& c);
 
 void print_board(Board const& Board);
 
+void print_cell(int value);
+
 std::size_t get_printable_size(std::size_t size);
 
 void print_board_row(std::size_t size, std::vector<Cell> const& row);
@@ -28,6 +30,8 @@ void print_border_row(std::size_t size);
 void print_buffer_row(std::size_t size);
 
 void print_buffer_row(std::size_t size);
+
+void print_left_padding();
 
 #endif // !UTILS_DISPLAY_HPP
 
