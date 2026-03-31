@@ -1,9 +1,9 @@
 #include "../inc/board.hpp"
 #include "../inc/utils/display.hpp"
 
-#include <cassert>
-#include <cstddef>  // std::size_t
-#include <vector>   // std::vector
+#include <algorithm>    // std::reverse
+#include <cstddef>      // std::size_t
+#include <vector>       // std::vector
 
 Board::Board(std::size_t size)
     : m_size(size)
@@ -64,3 +64,129 @@ void Board::place_empty_cell(std::size_t i)
     }
 }
 
+void Board::collapse_move(InputEvent direction)
+{
+    bool is_row = (direction == INPUT_RIGHT || direction == INPUT_LEFT);
+    bool forward = (direction == INPUT_LEFT || direction == INPUT_UP);
+
+    for (std::size_t index = 0; index < m_size; ++index) {
+        auto line = extract_line(index, is_row);
+        collapse_line(line, forward);
+        write_line(index, is_row, line);
+    }
+}
+
+std::vector<int> Board::extract_line(std::size_t index, bool is_row)
+{
+    std::vector<int> line;
+    for (std::size_t i = 0; i < m_size; ++i) {
+        if (is_row)
+            line.push_back(m_board[index][i].value);
+        else
+            line.push_back(m_board[i][index].value);
+    }
+    return line;
+}
+
+void Board::write_line(std::size_t index, bool is_row, std::vector<int>& line)
+{
+    for (std::size_t i = 0; i < m_size; ++i) {
+        if (is_row)
+            m_board[index][i].value = line[i];
+        else
+            m_board[i][index].value = line[i];
+    }
+}
+
+void Board::collapse_line(std::vector<int>& line, bool forward)
+{
+    if ( !forward )
+        std::reverse(line.begin(), line.end());
+
+    bool merged = false;
+    std::vector<int> result(m_size, 0);
+    std::size_t new_index = 0;
+
+    for (int row = 0; row < m_size; ++row) {
+        int value = line[row];
+        if (value == 0) continue;
+
+        if (new_index == 0) {
+            result[new_index++] = value;
+        } else if ( !merged && value == result[new_index - 1] ) {
+            result[new_index - 1] += value;
+        } else {
+            result[new_index++] = value;
+            merged = false;
+        }
+    }
+    if ( !forward )
+        std::reverse(result.begin(), result.end());
+    line = result;
+}
+
+
+// // =========================
+//
+// void Board::collapse_board_col(std::size_t col, bool is_up)
+// {
+//     std::size_t start = is_up ? 0 : m_size - 1;
+//     std::size_t end   = is_up ? m_size - 1 : 0;
+//     int step = is_up ? 1 : -1;
+//
+//     bool merged = false;
+//     std::vector<int> new_col(m_size, 0);
+//     std::size_t new_index = start;
+//
+//     for (int row = start; row * step <= (int)end * step; row += step) {
+//         int cell_value = m_board[row][col].value;
+//         if (cell_value == 0) continue;
+//
+//         if (new_index == start) {
+//             new_col[new_index] = cell_value;
+//             new_index += step;
+//         } else if ( !merged && cell_value == new_col[new_index - step] ) {
+//             new_col[new_index - step] += cell_value;
+//         } else {
+//             new_col[new_index] = cell_value;
+//             new_index += step;
+//             merged = false;
+//         }
+//     }
+//     // write new col
+//     for (std::size_t row = 0; row < m_size; ++row) {
+//         m_board[row][col].value = new_col[row];
+//     }
+// }
+//
+// void Board::collapse_board_row(std::size_t row, bool is_left)
+// {
+//     std::size_t start = is_left ? 0 : m_size - 1;
+//     std::size_t end   = is_left ? m_size - 1 : 0;
+//     int step = is_left ? 1 : -1;
+//
+//     bool merged = false;
+//     std::vector<int> new_col(m_size, 0);
+//     std::size_t new_index = start;
+//
+//     for (int col = start; col * step <= (int)end * step; col += step) {
+//         int cell_value = m_board[row][col].value;
+//         if (cell_value == 0) continue;
+//
+//         if (new_index == start) {
+//             new_col[new_index] = cell_value;
+//             new_index += step;
+//         } else if ( !merged && cell_value == new_col[new_index - step] ) {
+//             new_col[new_index - step] += cell_value;
+//         } else {
+//             new_col[new_index] = cell_value;
+//             new_index += step;
+//             merged = false;
+//         }
+//     }
+//     // write new row
+//     for (std::size_t col = 0; col < m_size; ++col) {
+//         m_board[row][col].value = new_col[col];
+//     }
+// }
+//

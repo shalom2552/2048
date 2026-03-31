@@ -1,4 +1,5 @@
 #include "../inc/game.hpp"
+#include "../inc/types.hpp"
 #include "../inc/utils/input.hpp"
 
 #include <cstddef>      // std::size_t
@@ -18,21 +19,32 @@ void Game::run()
         m_board.render();
 
         InputEvent input = get_input();
-
-        (void)input;
-        // handle_move(input);
+        handle_input(input);
     }
 }
 
+void Game::handle_input(InputEvent input)
+{
+    switch (input) {
+        case INPUT_UP:
+        case INPUT_DOWN:
+        case INPUT_RIGHT:
+        case INPUT_LEFT: 
+            handle_move(input);
+            break;
+        case INPUT_QUIT:
+            handle_quit();
+            break;
+    }
+}
 
-// void Game::handle_move(InputEvent input)
-// {
-//     switch (input) {
-//         case INPUT_UP: handle_up();
-//         case INPUT_DOWN: handle_down();
-//         case INPUT_RIGHT: handle_right();
-//         case INPUT_LEFT: handle_left();
-//         case INPUT_QUIT: handle_quit();
-//     }
-// }
+void Game::handle_move(InputEvent direction)
+{
+    m_board.collapse_move(direction);
+}
+
+void Game::handle_quit()
+{
+    m_running = false;
+}
 

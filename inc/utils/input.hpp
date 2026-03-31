@@ -1,13 +1,7 @@
 #ifndef UTILS_INPUT_HPP
 #define UTILS_INPUT_HPP
 
-enum InputEvent {
-    INPUT_UP,
-    INPUT_DOWN,
-    INPUT_RIGHT,
-    INPUT_LEFT,
-    INPUT_QUIT,
-};
+#include "../types.hpp"
 
 void input_setup();
 
