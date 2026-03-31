@@ -9,10 +9,13 @@
 #include <string>   // std::string
 #include <vector>   // std::vector
 
-std::size_t get_printable_size(std::size_t size)
+void print_score(int score, int moves)
 {
-    // 3 palaces for cell and 1 for separator (|_0_|)
-    return (BOX_CELL_WIDTH + 1) * size + 1;
+    using namespace std::string_literals;
+    std::string sscore = std::to_string(score);
+    std::string smoves = std::to_string(moves);
+    std::string stats = "Score: "s + sscore + "\t Moves: "s + smoves;
+    print_padded_line(SCORE_PADDING, stats);
 }
 
 void print_board(Board const& board)
@@ -26,6 +29,22 @@ void print_board(Board const& board)
         print_board_buffer_row(size);
     }
     print_board_bottom_border(size);
+}
+
+void print_board_cell(int value)
+{
+    std::string svalue = std::to_string(value);
+    if (svalue == "0") svalue = " ";
+    int padding = BOX_CELL_WIDTH - svalue.size();
+    int left = padding / 2;
+    int right = padding - left;
+    std::cout << std::string(left, ' ') << svalue << std::string(right, ' ');
+}
+
+std::size_t get_printable_size(std::size_t size)
+{
+    // 3 palaces for cell and 1 for separator (|_0_|)
+    return (BOX_CELL_WIDTH + 1) * size + 1;
 }
 
 void print_board_row(std::size_t size, std::vector<Cell> const& row)
@@ -50,16 +69,6 @@ void print_board_row(std::size_t size, std::vector<Cell> const& row)
     }
     print_char(ANSII_BOX_VR);
     print_char("\n");
-}
-
-void print_board_cell(int value)
-{
-    std::string svalue = std::to_string(value);
-    if (svalue == "0") svalue = " ";
-    int padding = BOX_CELL_WIDTH - svalue.size();
-    int left = padding / 2;
-    int right = padding - left;
-    std::cout << std::string(left, ' ') << svalue << std::string(right, ' ');
 }
 
 void print_board_row(std::size_t size, Ansi left, Ansi sep, Ansi mid, Ansi right)

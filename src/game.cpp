@@ -65,7 +65,10 @@ void Game::update_score()
 void Game::render_game()
 {
     clear_screen();
+    print_header();
     print_board(*m_board);
+    print_score(m_score, m_moves);
+    print_footer();
 }
 
 void Game::handle_quit()

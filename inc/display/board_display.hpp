@@ -6,6 +6,9 @@
 
 #include <cstddef>  // std::size_t
 
+/* prints the game score */
+void print_score(int score, int moves);
+
 /* main function to print the board */
 void print_board(Board const& Board);
 
