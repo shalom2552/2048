@@ -4,6 +4,7 @@
 
 #include <cstddef>      // std::size_t
 #include <cstdlib>      // rand
+#include <iostream>
 
 Game::Game(std::size_t size)
     : m_board(size)
@@ -17,7 +18,7 @@ void Game::run()
     m_board.generate_new_cell();
     m_board.render();
     while (m_running) {
-        // if (is_game_over()) handle_game_over();
+        if (is_game_over()) handle_game_over();
         InputEvent input = get_input();
         handle_input(input);
 
@@ -48,6 +49,22 @@ void Game::handle_move(InputEvent direction)
 }
 
 void Game::handle_quit()
+{
+    std::cout << "See ya!";
+    end_game();
+}
+
+bool Game::is_game_over()
+{
+    return !m_board.has_valid_move();
+}
+
+void Game::handle_game_over()
+{
+    end_game();
+}
+
+void Game::end_game()
 {
     m_running = false;
 }

@@ -65,9 +65,18 @@ void Board::place_empty_cell(std::size_t i)
     }
 }
 
-bool Board::changed()
+bool Board::has_valid_move()
 {
-    return m_changed;
+    if (count_empty_cells() > 0) return true;
+
+    // check for equal neighbors
+    for (std::size_t row = 0; row < m_size; ++row) {
+        for (std::size_t col = 0; col < m_size; ++col) {
+            if (row + 1 < m_size && m_board[row + 1][col].value == m_board[row][col].value) return true;
+            if (col + 1 < m_size && m_board[row][col + 1].value == m_board[row][col].value) return true;
+        }
+    }
+    return false;
 }
 
 void Board::collapse_move(InputEvent direction)
@@ -134,5 +143,10 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
         m_changed = true;
 
     line = result;
+}
+
+bool Board::changed()
+{
+    return m_changed;
 }
 

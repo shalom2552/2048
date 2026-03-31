@@ -21,6 +21,8 @@ public:
     std::size_t count_empty_cells() const;
     void generate_new_cell();
 
+    bool has_valid_move();
+
     /* collase all lines acording to the input direction */
     void collapse_move(InputEvent);
 

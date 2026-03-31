@@ -23,6 +23,10 @@ private:
     void handle_move(InputEvent driection);
     void handle_quit();
 
+    bool is_game_over();
+    void handle_game_over();
+    void end_game();
+
 private:
     Board m_board;
 
