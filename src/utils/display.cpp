@@ -30,7 +30,7 @@ void print_board(Board const& board)
     print_top_border(size);
     for (std::size_t i = 0; i < size; ++i) {
         if (i > 0) print_border_row(size);
-        print_buffer_row(size);
+        print_buffer_row(size);  // add height to the board
         print_board_row(size, board.get_board()[i]);
         print_buffer_row(size);
     }
