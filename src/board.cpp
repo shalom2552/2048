@@ -1,5 +1,4 @@
 #include "../inc/board.hpp"
-#include "../inc/utils/display.hpp"
 
 #include <algorithm>    // std::reverse
 #include <cstddef>      // std::size_t
@@ -12,12 +11,6 @@ Board::Board(std::size_t size)
 {
 }
 
-void Board::render()
-{
-    clear_screen();
-    print_board(*this);
-}
-
 std::size_t Board::size() const
 {
     return m_size;
@@ -26,6 +19,17 @@ std::size_t Board::size() const
 const std::vector<std::vector<Cell>>& Board::get_board() const
 {
     return m_board;
+}
+
+unsigned int Board::get_score()
+{
+    unsigned int score = 0;
+    for (std::size_t row = 0; row < m_size; ++row) {
+        for (std::size_t col = 0; col < m_size; ++col) {
+            score += m_board[row][col].value;
+        }
+    }
+    return score;
 }
 
 std::size_t Board::count_empty_cells() const
@@ -119,28 +123,34 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
     if ( !forward )
         std::reverse(line.begin(), line.end());
 
-    bool merged = false;
     std::vector<int> result(m_size, 0);
-    std::size_t new_index = 0;
+    std::size_t write = 0;
+    bool merged = false;    // so we dont merge merged
 
     for (int row = 0; row < (int)m_size; ++row) {
         int value = line[row];
         if (value == 0) continue;
 
-        if (new_index == 0) {
-            result[new_index++] = value;
-        } else if ( !merged && value == result[new_index - 1] ) {
-            result[new_index - 1] += value;
+        // just write first value, nothing to compare
+        if (write == 0) {
+            result[write++] = value;
+
+        } else if ( !merged && value == result[write - 1] ) {
+            result[write - 1] += value;
+
         } else {
-            result[new_index++] = value;
+            result[write++] = value;
             merged = false;
         }
     }
-    if ( !forward )
-        std::reverse(result.begin(), result.end());
 
-    if (line != result)
+    if (line != result) {
         m_changed = true;
+    }
+
+    if ( !forward ) {
+        std::reverse(result.begin(), result.end());
+    }
 
     line = result;
 }

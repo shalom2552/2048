@@ -1,5 +1,5 @@
-#include "../../inc/utils/input.hpp"
-#include "../../inc/constants.hpp"
+#include "../inc/input.hpp"
+#include "../inc/constants.hpp"
 
 #include <termios.h>
 #include <cstdlib>      // atexit
