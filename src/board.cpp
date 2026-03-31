@@ -123,7 +123,7 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
     std::vector<int> result(m_size, 0);
     std::size_t new_index = 0;
 
-    for (int row = 0; row < m_size; ++row) {
+    for (int row = 0; row < (int)m_size; ++row) {
         int value = line[row];
         if (value == 0) continue;
 
