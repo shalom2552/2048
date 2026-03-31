@@ -27,5 +27,7 @@ void print_border_row(std::size_t size);
 
 void print_buffer_row(std::size_t size);
 
+void print_buffer_row(std::size_t size);
+
 #endif // !UTILS_DISPLAY_HPP
 

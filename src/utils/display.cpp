@@ -24,7 +24,9 @@ void print_board(Board const& board)
     print_top_border(size);
     for (std::size_t i = 0; i < size; ++i) {
         if (i > 0) print_border_row(size);
+        print_buffer_row(size);
         print_board_row(size, board.get_board()[i]);
+        print_buffer_row(size);
     }
     print_bottom_border(size);
 }
@@ -75,6 +77,11 @@ void print_bottom_border(std::size_t size)
 void print_border_row(std::size_t size)
 {
     print_box_row(size, ANSII_BOX_VR, ANSII_BOX_CR, ANSII_BOX_HZ, ANSII_BOX_VR);
+}
+
+void print_buffer_row(std::size_t size)
+{
+    print_box_row(size, ANSII_BOX_VR, ANSII_BOX_VR, " ", ANSII_BOX_VR);
 }
 
 void print_box_row(std::size_t size, Ansi left, Ansi sep, Ansi mid, Ansi right)
