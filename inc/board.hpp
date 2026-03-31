@@ -24,6 +24,9 @@ public:
     /* return a const reference of the board */
     const std::vector<std::vector<Cell>>& get_board() const;
 
+    /* return the sum of all cells */
+    unsigned int get_score();
+
     /* return the number of empty cells in the board */
     std::size_t count_empty_cells() const;
 

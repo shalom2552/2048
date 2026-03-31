@@ -1,4 +1,4 @@
-#include "../../inc/utils/display.hpp"
+#include "../../inc/display/board_display.hpp"
 #include "../../inc/constants.hpp"
 #include "../../inc/board.hpp"
 #include "../../inc/types.hpp"

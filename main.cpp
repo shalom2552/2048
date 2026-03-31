@@ -1,10 +1,10 @@
 #include "inc/game.hpp"
-#include "inc/utils/input.hpp"
+#include "inc/input.hpp"
 
 int main () {
     input_setup();
 
-    Game game{5};
+    Game game{4};
     game.run();
 
     cleanup();

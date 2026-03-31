@@ -1,7 +1,7 @@
-#ifndef UTILS_INPUT_HPP
-#define UTILS_INPUT_HPP
+#ifndef INPUT_HPP
+#define INPUT_HPP
 
-#include "../types.hpp"
+#include "types.hpp"
 
 /* enable teminal raw mode */
 void input_setup();
@@ -15,5 +15,5 @@ void handle_sigint(int sig);
 /* parse user input to input type */
 InputEvent get_input();
 
-#endif // !UTILS_INPUT_HPP
+#endif // !INPUT_HPP
 

@@ -1,5 +1,5 @@
-#ifndef UTILS_DISPLAY_HPP
-#define UTILS_DISPLAY_HPP
+#ifndef DISPLAY_BOARD_DISPLAY_HPP
+#define DISPLAY_BOARD_DISPLAY_HPP
 
 #include "../board.hpp"     // Board
 #include "../types.hpp"     // Ansi
@@ -43,5 +43,5 @@ void print_buffer_row(std::size_t size);
 /* add padding to the board from the left */
 void print_left_padding();
 
-#endif // !UTILS_DISPLAY_HPP
+#endif // !DISPLAY_BOARD_DISPLAY_HPP
 

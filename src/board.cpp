@@ -1,5 +1,5 @@
 #include "../inc/board.hpp"
-#include "../inc/utils/display.hpp"
+#include "../inc/display/board_display.hpp"
 
 #include <algorithm>    // std::reverse
 #include <cstddef>      // std::size_t
@@ -26,6 +26,17 @@ std::size_t Board::size() const
 const std::vector<std::vector<Cell>>& Board::get_board() const
 {
     return m_board;
+}
+
+unsigned int Board::get_score()
+{
+    unsigned int score = 0;
+    for (std::size_t row = 0; row < m_size; ++row) {
+        for (std::size_t col = 0; col < m_size; ++col) {
+            score += m_board[row][col].value;
+        }
+    }
+    return score;
 }
 
 std::size_t Board::count_empty_cells() const

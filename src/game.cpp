@@ -1,31 +1,34 @@
 #include "../inc/game.hpp"
 #include "../inc/types.hpp"
-#include "../inc/utils/input.hpp"
+#include "../inc/input.hpp"
 
 #include <cstddef>      // std::size_t
 #include <cstdlib>      // rand
-#include <iostream>
+#include <iostream>     // std::cout
+#include <memory>       // std::make_unique
 
 Game::Game(std::size_t size)
-    : m_board(size)
-    , m_score(0)
+    : m_board(std::make_unique<Board>(size))
     , m_running(true)
+    , m_score(0)
+    , m_moves(0)
 {
 }
 
 void Game::run()
 {
-    m_board.generate_new_cell();
-    m_board.render();
+    m_board->generate_new_cell();
+    m_board->render();
     while (m_running) {
         if (is_game_over()) handle_game_over();
         InputEvent input = get_input();
         handle_input(input);
 
-        // skip new cell generation if no board change
-        if (!m_board.changed()) continue;
-        m_board.generate_new_cell();
-        m_board.render();
+        // skip, no board change
+        if (!m_board->changed()) continue;
+        m_board->generate_new_cell();
+        update_score();
+        render_game();
     }
 }
 
@@ -46,7 +49,19 @@ void Game::handle_input(InputEvent input)
 
 void Game::handle_move(InputEvent direction)
 {
-    m_board.collapse_move(direction);
+    m_board->collapse_move(direction);
+}
+
+void Game::update_score()
+{
+    ++m_moves;
+    m_score = m_board->get_score();
+}
+
+void Game::render_game()
+{
+
+    m_board->render();
 }
 
 void Game::handle_quit()
@@ -57,7 +72,7 @@ void Game::handle_quit()
 
 bool Game::is_game_over()
 {
-    return !m_board.has_valid_move();
+    return !m_board->has_valid_move();
 }
 
 void Game::handle_game_over()

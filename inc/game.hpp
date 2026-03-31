@@ -5,6 +5,7 @@
 #include "types.hpp"
 
 #include <cstddef>      // std::size_t
+#include <memory>       // std::unique_ptr
 
 class Game {
 public:
@@ -26,6 +27,12 @@ private:
     /* call end game */
     void handle_quit();
 
+    /* update the score and moves */
+    void update_score();
+
+    /* prints the game to the terminal */
+    void render_game();
+
     /* return true if there is no valid move */
     bool is_game_over();
 
@@ -36,10 +43,11 @@ private:
     void end_game();
 
 private:
-    Board m_board;
+    std::unique_ptr<Board> m_board;
 
-    unsigned int m_score;
     bool m_running;
+    unsigned int m_score;
+    unsigned int m_moves;
 };
 
 #endif // GAME_HPP
