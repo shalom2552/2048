@@ -24,6 +24,9 @@ public:
     /* collase all lines acording to the input direction */
     void collapse_move(InputEvent);
 
+    /* return true if last move changed the board */
+    bool changed();
+
 private:
     void place_empty_cell(std::size_t i);
 
@@ -34,6 +37,8 @@ private:
 private:
     std::size_t m_size;
     std::vector<std::vector<Cell>> m_board;
+
+    bool m_changed;
 };
 
 #endif // BOARD_HPP

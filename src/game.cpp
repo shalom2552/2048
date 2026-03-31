@@ -14,12 +14,16 @@ Game::Game(std::size_t size)
 
 void Game::run()
 {
+    m_board.generate_new_cell();
+    m_board.render();
     while (m_running) {
-        m_board.generate_new_cell();
-        m_board.render();
-
+        // if (is_game_over()) handle_game_over();
         InputEvent input = get_input();
         handle_input(input);
+
+        if (!m_board.changed()) continue;
+        m_board.generate_new_cell();
+        m_board.render();
     }
 }
 
