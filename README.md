@@ -3,7 +3,13 @@
 Terminal-based 2048 game written in C++17.
 
 ## Status
-Work in progress
+- [x] display
+- [x] Input
+- [x] Game Logic
+- [ ] Score System
+- [ ] Colors
+- [ ] Main Menu
+- [ ] End Menu
 
 ## Build
 ```
