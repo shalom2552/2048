@@ -4,7 +4,7 @@
 int main () {
     input_setup();
 
-    Game game{6};
+    Game game{3};
     game.run();
 
     cleanup();

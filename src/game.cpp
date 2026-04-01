@@ -23,16 +23,16 @@ void Game::run()
     render_game();
 
     while (m_running) {
-        if (is_game_over()) handle_game_over();
-
         InputEvent input = get_input();
         handle_input(input);
 
-        // skip, no board change
-        if (!m_board->changed()) continue;
-        m_board->generate_new_cell();
-        update_score();
-        render_game();
+        // skip if no board change
+        if (m_board->changed()){
+            if (is_game_over()) handle_game_over();
+            m_board->generate_new_cell();
+            update_score();
+            render_game();
+        }
     }
 }
 
