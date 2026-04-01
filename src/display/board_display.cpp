@@ -4,6 +4,7 @@
 #include "../../inc/board.hpp"
 #include "../../inc/types.hpp"
 
+#include <cmath>    // std::log2
 #include <cstddef>  // std::size_t
 #include <iostream> // std::cout
 #include <string>   // std::string
@@ -31,14 +32,26 @@ void print_board(Board const& board)
     print_board_bottom_border(size);
 }
 
+std::string get_cell_color(int value)
+{
+    if (value == 0) return ANSI_COLOR_RESET;
+    int color_index = static_cast<int>(std::log2(value)) - 1;
+    return CELL_COLORS[color_index];
+}
+
 void print_board_cell(int value)
 {
     std::string svalue = std::to_string(value);
     if (svalue == "0") svalue = " ";
+
+    // print cell with padding
     int padding = BOX_CELL_WIDTH - svalue.size();
     int left = padding / 2;
     int right = padding - left;
+
+    print_char(ANSI_COLOR_BOLD + get_cell_color(value));
     std::cout << std::string(left, ' ') << svalue << std::string(right, ' ');
+    print_char(ANSI_COLOR_RESET);
 }
 
 std::size_t get_printable_size(std::size_t size)
@@ -53,7 +66,7 @@ void print_board_row(std::size_t size, std::vector<Cell> const& row)
     std::size_t cell_idx = 0;
 
     print_left_padding(BOX_LEFT_PADNG);
-    print_char(ANSII_BOX_VR);
+    print_char(ANSI_BOX_VR);
     for (std::size_t i = 1; i < size - 1; ++i) {
 
         // cell value
@@ -63,11 +76,11 @@ void print_board_row(std::size_t size, std::vector<Cell> const& row)
         }
         // new cell - add vertival border
         else if (i % (BOX_CELL_WIDTH + 1) == 0) {
-            print_char(ANSII_BOX_VR);
+            print_char(ANSI_BOX_VR);
             ++cell_idx;
         }
     }
-    print_char(ANSII_BOX_VR);
+    print_char(ANSI_BOX_VR);
     print_char("\n");
 }
 
@@ -86,21 +99,21 @@ void print_board_row(std::size_t size, Ansi left, Ansi sep, Ansi mid, Ansi right
 
 void print_board_top_border(std::size_t size)
 {
-    print_board_row(size, ANSII_BOX_TL, ANSII_BOX_TM, ANSII_BOX_HZ, ANSII_BOX_TR);
+    print_board_row(size, ANSI_BOX_TL, ANSI_BOX_TM, ANSI_BOX_HZ, ANSI_BOX_TR);
 }
 
 void print_board_bottom_border(std::size_t size)
 {
-    print_board_row(size, ANSII_BOX_BL, ANSII_BOX_BM, ANSII_BOX_HZ, ANSII_BOX_BR);
+    print_board_row(size, ANSI_BOX_BL, ANSI_BOX_BM, ANSI_BOX_HZ, ANSI_BOX_BR);
 }
 
 void print_board_border_row(std::size_t size)
 {
-    print_board_row(size, ANSII_BOX_VR, ANSII_BOX_CR, ANSII_BOX_HZ, ANSII_BOX_VR);
+    print_board_row(size, ANSI_BOX_VR, ANSI_BOX_CR, ANSI_BOX_HZ, ANSI_BOX_VR);
 }
 
 void print_board_buffer_row(std::size_t size)
 {
-    print_board_row(size, ANSII_BOX_VR, ANSII_BOX_VR, " ", ANSII_BOX_VR);
+    print_board_row(size, ANSI_BOX_VR, ANSI_BOX_VR, " ", ANSI_BOX_VR);
 }
 
