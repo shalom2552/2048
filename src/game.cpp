@@ -28,10 +28,10 @@ void Game::run()
 
         // skip if no board change
         if (m_board->changed()){
-            if (is_game_over()) handle_game_over();
             m_board->generate_new_cell();
             update_score();
             render_game();
+            if (is_game_over()) handle_game_over();
         }
     }
 }
@@ -85,6 +85,7 @@ bool Game::is_game_over()
 void Game::handle_game_over()
 {
     end_game();
+    print_line("No available moves. Game over!");
 }
 
 void Game::end_game()
