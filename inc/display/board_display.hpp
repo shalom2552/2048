@@ -5,12 +5,16 @@
 #include "../types.hpp"     // Ansi
 
 #include <cstddef>  // std::size_t
+#include <string>
 
 /* prints the game score */
 void print_score(int score, int moves);
 
 /* main function to print the board */
 void print_board(Board const& Board);
+
+/* return an ansi color code based on the cell value */
+std::string get_cell_color(int value);
 
 /* prints cell with padding */
 void print_board_cell(int value);

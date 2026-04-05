@@ -23,16 +23,16 @@ void Game::run()
     render_game();
 
     while (m_running) {
-        if (is_game_over()) handle_game_over();
-
         InputEvent input = get_input();
         handle_input(input);
 
-        // skip, no board change
-        if (!m_board->changed()) continue;
-        m_board->generate_new_cell();
-        update_score();
-        render_game();
+        // skip if no board change
+        if (m_board->changed()){
+            m_board->generate_new_cell();
+            update_score();
+            render_game();
+            if (is_game_over()) handle_game_over();
+        }
     }
 }
 
@@ -85,6 +85,7 @@ bool Game::is_game_over()
 void Game::handle_game_over()
 {
     end_game();
+    print_line("No available moves. Game over!");
 }
 
 void Game::end_game()
