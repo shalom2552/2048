@@ -25,14 +25,19 @@ void print_padded_line(int padding, std::string const& line)
     print_line(line);
 }
 
+void print_padding(int padding)
+{
+    std::cout << std::string(padding, '\t');
+}
+
 void print_empty_lines(int lines)
 {
-    std::cout << std::string(lines, '\n');
+    print_char(std::string(lines, '\n'));
 }
 
 void print_left_padding(unsigned int padding)
 {
-    std::cout << std::string(padding, ' ');
+    print_char(std::string(padding, '\t'));
 }
 
 void print_header()

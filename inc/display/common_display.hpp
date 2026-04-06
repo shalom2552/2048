@@ -12,8 +12,11 @@ void print_char(std::string const& c);
 /* print single line string to the screen */
 void print_line(std::string const& line);
 
-/* print single line string to the screen */
+/* print padded string line to the screen */
 void print_padded_line(int padding, std::string const& line);
+
+/* print #padding tabs to the screen */
+void print_padding(int padding);
 
 /* prints #liens empty lines for vertical padding */
 void print_empty_lines(int lines);

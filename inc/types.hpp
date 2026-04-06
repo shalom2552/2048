@@ -5,6 +5,7 @@
 
 using Ansi = std::string;
 
+/* user input options */
 enum InputEvent {
     INPUT_UP,
     INPUT_DOWN,
@@ -15,7 +16,16 @@ enum InputEvent {
 };
 
 struct MenuItem {
+    int id;
     std::string title;
 };
+
+enum MainMenuOptions {
+    MM_START,
+    MM_SIZE,
+    MM_HELP,
+    MM_QUIT,
+};
+
 
 #endif // !TYPES_HPP

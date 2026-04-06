@@ -2,39 +2,54 @@
 #include "../../inc/input.hpp"
 #include "../../inc/display/menu_display.hpp"
 
-#include <cstddef>      // std::size_t
-
-int Menu::run_menu(std::vector<MenuItem> const& items, std::size_t selected)
+void Menu::run_menu()
 {
-    for (;;) {
-        display_menu(items, selected);
+    while (m_in_menu) {
+        display_menu(m_items, m_selected);
 
         InputEvent input = get_input();
         switch (input) {
-            case INPUT_DOWN: select_next(selected); break;
-            case INPUT_UP: select_prev(selected); break;
-            case INPUT_SELECT: return selected;
+            case INPUT_DOWN: select_next(); break;
+            case INPUT_UP: select_prev(); break;
+            case INPUT_QUIT: exit(0);
+            case INPUT_SELECT: handle_select();
             default: break;
         }
     }
 }
 
-void Menu::select_next(std::size_t& selected)
+void Menu::exit_menu()
 {
-    // circulate back
-	if (selected == m_items_count - 1) {
-		selected = 0;
-		return;
-	}
-	++selected;
+    m_in_menu = false;
 }
 
-void Menu::select_prev(std::size_t& selected)
+void Menu::add_item(MenuItem item)
+{
+    m_items.push_back(item);
+    ++m_items_count;
+}
+
+std::size_t Menu::get_menu_selection()
+{
+    return m_selected;
+}
+
+void Menu::select_next()
+{
+    // circulate back
+	if (m_selected == m_items_count - 1) {
+		m_selected = 0;
+		return;
+	}
+	++m_selected;
+}
+
+void Menu::select_prev()
 {
     // circulate to last
-	if (selected == 0) {
-		selected = m_items_count - 1;
+	if (m_selected == 0) {
+		m_selected = m_items_count - 1;
         return;
 	}
-	--selected;
+	--m_selected;
 }
