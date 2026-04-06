@@ -48,6 +48,7 @@ void Game::handle_input(InputEvent input)
         case INPUT_QUIT:
             handle_quit();
             break;
+        default: break;
     }
 }
 

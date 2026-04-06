@@ -5,8 +5,9 @@
 #include <vector>
 
 // colors
-const std::string ANSI_COLOR_RESET  = "\033[0m";
-const std::string ANSI_COLOR_BOLD   = "\033[1;38;5;194m";
+const std::string ANSI_COLOR_RESET      = "\033[0m";
+const std::string ANSI_COLOR_BOLD       = "\033[1;38;5;194m";
+const std::string ANSI_COLOR_BG_BLUE    = "\033[44m";
 
 const std::string CELL_COLOR_2    = "\033[1;38;5;255m";
 const std::string CELL_COLOR_4    = "\033[1;38;5;120m";
@@ -41,6 +42,7 @@ const char KEY_DOWN      = 's';
 const char KEY_RIGHT     = 'd';
 const char KEY_LEFT      = 'a';
 const char KEY_QUIT      = 'q';
+const char KEY_SELECT    = '\r';
 
 // padding
 const int SCORE_PADDING  = 25;
@@ -67,6 +69,10 @@ const std::string ANSI_BOX_ML  = "┣";
 
 // clear screen
 const std::string ANSI_CLEAR     = "\033[H\033[2J\033[3J";
+
+// menu
+const int MENU_TITLE_PADDING    = 8;
+const int MENU_ITEM_PADDING     = 8;
 
 #endif // !CONSTANTS_HPP
 
