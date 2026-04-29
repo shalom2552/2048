@@ -28,8 +28,15 @@ Terminal-based 2048 game written in C++17.
 
 ## Build
 
-```
+```sh
+git clone https://github.com/shalom2552/2048.git
+cd 2048
 make
+```
+
+## Run
+
+```sh
 ./game
 ```
 
