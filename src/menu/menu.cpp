@@ -5,17 +5,24 @@
 void Menu::run_menu()
 {
     while (m_in_menu) {
-        display_menu(m_items, m_selected);
+        display();
 
         InputEvent input = get_input();
         switch (input) {
             case INPUT_DOWN: select_next(); break;
             case INPUT_UP: select_prev(); break;
+            case INPUT_LEFT: handle_left(); break;
+            case INPUT_RIGHT: handle_right(); break;
             case INPUT_QUIT: exit(0);
             case INPUT_SELECT: handle_select();
             default: break;
         }
     }
+}
+
+void Menu::display()
+{
+    display_menu(m_items, m_selected);
 }
 
 void Menu::exit_menu()

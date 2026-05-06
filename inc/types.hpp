@@ -15,17 +15,26 @@ enum InputEvent {
     INPUT_QUIT,
 };
 
+struct GameSettings {
+    int board_size = 4;
+};
+
 struct MenuItem {
-    int id;
+    const int id;
     std::string title;
+    int value = -1;
 };
 
 enum MainMenuOptions {
     MM_START,
-    MM_SIZE,
+    MM_SETTINGS,
     MM_HELP,
     MM_QUIT,
 };
 
+enum SettingsMenuOptions {
+    SM_BOARD_SIZE,
+    SM_BACK,
+};
 
 #endif // !TYPES_HPP

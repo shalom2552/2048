@@ -4,6 +4,10 @@
 #include <string>       // std::string
 #include <vector>
 
+// Board
+#define MAX_BOARD_SIZE 8
+#define MIN_BOARD_SIZE 2
+
 // Colors
 const std::string ANSI_COLOR_RESET      = "\033[0m";
 const std::string ANSI_COLOR_BOLD       = "\033[1;38;5;194m";

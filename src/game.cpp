@@ -4,13 +4,11 @@
 #include "../inc/display/board_display.hpp"
 #include "../inc/display/common_display.hpp"
 
-#include <cstddef>      // std::size_t
-#include <cstdlib>      // rand
 #include <iostream>     // std::cout
 #include <memory>       // std::make_unique
 
-Game::Game(std::size_t size)
-    : m_board(std::make_unique<Board>(size))
+Game::Game(GameSettings settings)
+    : m_board(std::make_unique<Board>(settings.board_size))
     , m_running(true)
     , m_score(0)
     , m_moves(0)
@@ -42,7 +40,7 @@ void Game::handle_input(InputEvent input)
         case INPUT_UP:
         case INPUT_DOWN:
         case INPUT_RIGHT:
-        case INPUT_LEFT: 
+        case INPUT_LEFT:
             handle_move(input);
             break;
         case INPUT_QUIT:

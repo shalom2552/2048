@@ -9,6 +9,9 @@
 /* print the menu to the screen with the selected highlited */
 void display_menu(std::vector<MenuItem> const& items, std::size_t selected);
 
+/* print the settings menu to the screen with modification options */
+void display_settings_menu(std::vector<MenuItem> const& items, std::size_t selected);
+
 /* display the help page */
 void display_help();
 
