@@ -30,10 +30,29 @@ void display_menu(std::vector<MenuItem> const& items, std::size_t selected)
 
 void display_help()
 {
+
+    const char* help_text = R"(
+            HOW TO PLAY
+
+            Goal: merge tiles to reach 2048
+
+            Controls:
+              W / ↑   Move up
+              S / ↓   Move down
+              A / ←   Move left
+              D / →   Move right
+              Q       Quit game
+
+            Rules:
+              Tiles with equal values merge when they collide
+              Each merge adds the new tile's value to your score
+              Game ends when no moves remains.
+    )";
+
     clear_screen();
     print_header();
-    print_padded_line(3, "Help");
-    print_padded_line(2, "Press any key...");
+    print_padded_line(3, help_text);
+    print_padded_line(3, "Press any key...");
 
     print_footer();
 }
