@@ -9,8 +9,9 @@ Terminal-based 2048 game written in C++17.
 - [x] Game Logic
 - [x] Score System
 - [x] Colors
-- [ ] Main Menu
+- [x] Main Menu
 - [ ] End Menu
+- [ ] Max score
 
 ## Screenshots
 
