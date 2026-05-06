@@ -4,9 +4,14 @@
 #include <string>       // std::string
 #include <vector>
 
-// colors
-const std::string ANSI_COLOR_RESET  = "\033[0m";
-const std::string ANSI_COLOR_BOLD   = "\033[1;38;5;194m";
+// Board
+#define MAX_BOARD_SIZE 8
+#define MIN_BOARD_SIZE 2
+
+// Colors
+const std::string ANSI_COLOR_RESET      = "\033[0m";
+const std::string ANSI_COLOR_BOLD       = "\033[1;38;5;194m";
+const std::string ANSI_COLOR_BG_BLUE    = "\033[44m";
 
 const std::string CELL_COLOR_2    = "\033[1;38;5;255m";
 const std::string CELL_COLOR_4    = "\033[1;38;5;120m";
@@ -20,7 +25,7 @@ const std::string CELL_COLOR_512  = "\033[1;38;5;196m";
 const std::string CELL_COLOR_1024 = "\033[1;38;5;201m";
 const std::string CELL_COLOR_2048 = "\033[1;38;5;51m";
 
-// map cell colors
+// Map cell colors
 const std::vector<std::string> CELL_COLORS = {
     CELL_COLOR_2,
     CELL_COLOR_4,
@@ -35,18 +40,23 @@ const std::vector<std::string> CELL_COLORS = {
     CELL_COLOR_2048,
 };
 
-//input keys
+//Input keys
 const char KEY_UP        = 'w';
 const char KEY_DOWN      = 's';
 const char KEY_RIGHT     = 'd';
 const char KEY_LEFT      = 'a';
 const char KEY_QUIT      = 'q';
+const char KEY_SELECT    = '\n';
 
-// padding
-const int SCORE_PADDING  = 25;
-const int FOOTER_PADDING = 28;
-const int HEADER_PAADING = 20;
-const int BOX_LEFT_PADNG = 20;
+// Padding
+const int SCORE_PADDING  = 2;
+const int FOOTER_PADDING = 3;
+const int HEADER_PAADING = 2;
+const int BOX_LEFT_PADNG = 2;
+const int MENU_TITLE_PADDING    = 3;
+const int MENU_ITEM_PADDING     = 3;
+
+// Box
 const int BOX_CELL_WIDTH = 7;
 
 // Box unicodes
@@ -65,7 +75,7 @@ const std::string ANSI_BOX_HZ  = "━";
 const std::string ANSI_BOX_MR  = "┫";
 const std::string ANSI_BOX_ML  = "┣";
 
-// clear screen
+// Clear screen
 const std::string ANSI_CLEAR     = "\033[H\033[2J\033[3J";
 
 #endif // !CONSTANTS_HPP

@@ -4,12 +4,11 @@
 #include "board.hpp"
 #include "types.hpp"
 
-#include <cstddef>      // std::size_t
 #include <memory>       // std::unique_ptr
 
 class Game {
 public:
-    Game(std::size_t size = 4);
+    Game(GameSettings settings);
 
     /* main game loop */
     void run();

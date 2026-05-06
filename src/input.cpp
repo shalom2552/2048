@@ -48,6 +48,7 @@ InputEvent get_input()
             case KEY_RIGHT: return INPUT_RIGHT;
             case KEY_LEFT: return INPUT_LEFT;
             case KEY_QUIT: return INPUT_QUIT;
+            case KEY_SELECT: return INPUT_SELECT;
         }
         // add arrows handler
         if (c == '\033') {
