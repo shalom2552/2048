@@ -59,3 +59,14 @@ void Menu::select_prev()
 	}
 	--m_selected;
 }
+
+const std::vector<MenuItem>& Menu::get_items() const
+{
+    return m_items;
+}
+
+void Menu::set_item_value(std::size_t idx, int val)
+{
+    m_items[idx].value = val;
+}
+

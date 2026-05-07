@@ -25,10 +25,10 @@ public:
     void handle_left() override;
 
     /* Dispacher to update a setting by the given value */
-    void update_setting_value(int value);
+    void update_setting_value(int val);
 
     /* update the board size value by the given value */
-    void update_board_size(int value);
+    void update_board_size(int val);
 
 };
 

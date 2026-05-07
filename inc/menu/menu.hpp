@@ -47,10 +47,14 @@ protected:
     /* Lets the derived class an option to implement left key */
     virtual void handle_left() {}
 
+    /* Get const list of the items to print */
+    const std::vector<MenuItem>& get_items() const;
+
+    /* Set menu item value for left / right */
+    void set_item_value(std::size_t idx, int val);
+
 private:
     bool m_in_menu = true;
-
-protected:
     std::vector<MenuItem> m_items;
     std::size_t m_selected = 0;
 };

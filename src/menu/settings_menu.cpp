@@ -12,12 +12,12 @@ SettingsMenu::SettingsMenu(GameSettings const& settings)
 
 void SettingsMenu::display()
 {
-    display_settings_menu(m_items, m_selected);
+    display_settings_menu(get_items(), get_menu_selection());
 }
 
 void SettingsMenu::get_settings(GameSettings& settings)
 {
-    settings.board_size = m_items[SM_BOARD_SIZE].value;
+    settings.board_size = get_items()[SM_BOARD_SIZE].value;
 }
 
 void SettingsMenu::handle_select()
@@ -40,25 +40,25 @@ void SettingsMenu::handle_left()
     update_setting_value(-1);
 }
 
-void SettingsMenu::update_setting_value(int value)
+void SettingsMenu::update_setting_value(int val)
 {
     std::size_t setting = get_menu_selection();
     switch (setting) {
-        case SM_BOARD_SIZE: update_board_size(value);
+        case SM_BOARD_SIZE: update_board_size(val);
         case SM_BACK: return;
         default: return;
     }
 }
 
-void SettingsMenu::update_board_size(int value)
+void SettingsMenu::update_board_size(int val)
 {
-    int board_size = m_items[SM_BOARD_SIZE].value + value;
+    int board_size = val + get_items()[SM_BOARD_SIZE].value;
     if (board_size > MAX_BOARD_SIZE) {
         board_size = MAX_BOARD_SIZE;
     }
     if (board_size < MIN_BOARD_SIZE) {
         board_size = MIN_BOARD_SIZE;
     }
-    m_items[SM_BOARD_SIZE].value = board_size;
+    set_item_value(SM_BOARD_SIZE, board_size);
 }
 
