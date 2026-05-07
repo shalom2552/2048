@@ -23,13 +23,7 @@ const std::vector<std::vector<Cell>>& Board::get_board() const
 
 unsigned int Board::get_score() const
 {
-    unsigned int score = 0;
-    for (std::size_t row = 0; row < m_size; ++row) {
-        for (std::size_t col = 0; col < m_size; ++col) {
-            score += m_board[row][col].value;
-        }
-    }
-    return score;
+    return m_score;
 }
 
 std::size_t Board::count_empty_cells() const
@@ -137,6 +131,7 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
 
         } else if ( !merged && value == result[write - 1] ) {
             result[write - 1] += value;
+            m_score += result[write - 1];
             merged = true;
 
         } else {

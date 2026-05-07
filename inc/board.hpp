@@ -58,6 +58,7 @@ private:
     std::vector<std::vector<Cell>> m_board;
 
     bool m_changed;
+    unsigned int m_score = 0;
 };
 
 #endif // BOARD_HPP
