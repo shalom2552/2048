@@ -1,19 +1,15 @@
-#ifndef MENU_MENU_HPP
-#define MENU_MENU_HPP
+#ifndef MENU_I_MENU_HPP
+#define MENU_I_MENU_HPP
 
 #include "../types.hpp"    // MenuItem
 
 #include <cstddef>      // std::size_t
 #include <vector>       // std::vector
 
-/**
- * @class Menu
- * @brief Display menu options and get user selection
- */
-class Menu {
+class IMenu {
 public:
-    Menu() = default;
-    virtual ~Menu() = default;
+    IMenu() = default;
+    virtual ~IMenu() = default;
 
     /* Display and get user selection from the items list */
     void run_menu();
@@ -59,5 +55,4 @@ private:
     std::size_t m_selected = 0;
 };
 
-#endif // !MENU_MENU_HPP
-
+#endif // !MENU_I_MENU_HPP

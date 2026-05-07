@@ -1,9 +1,9 @@
 #ifndef MENU_MAIN_MENU_HPP
 #define MENU_MAIN_MENU_HPP
 
-#include "menu.hpp"
+#include "i_menu.hpp"
 
-class MainMenu : public Menu {
+class MainMenu : public IMenu {
 public:
     /* constracts the menu with its items */
     MainMenu();

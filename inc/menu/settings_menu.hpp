@@ -2,9 +2,9 @@
 #ifndef MENU_SETTINGS_MENU_HPP
 #define MENU_SETTINGS_MENU_HPP
 
-#include "menu.hpp"
+#include "i_menu.hpp"
 
-class SettingsMenu : public Menu {
+class SettingsMenu : public IMenu {
 public:
     /* constracts the menu with its items */
     SettingsMenu(GameSettings const& settings);

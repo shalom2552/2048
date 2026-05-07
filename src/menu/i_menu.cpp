@@ -1,8 +1,8 @@
-#include "../../inc/menu/menu.hpp"
+#include "../../inc/menu/i_menu.hpp"
 #include "../../inc/terminal.hpp"
 #include "../../inc/display/menu_display.hpp"
 
-void Menu::run_menu()
+void IMenu::run_menu()
 {
     while (m_in_menu) {
         display();
@@ -20,27 +20,27 @@ void Menu::run_menu()
     }
 }
 
-void Menu::display()
+void IMenu::display()
 {
-    display_menu(m_items, m_selected);
+    display_menu(get_items(), m_selected);
 }
 
-void Menu::exit_menu()
+void IMenu::exit_menu()
 {
     m_in_menu = false;
 }
 
-void Menu::add_item(MenuItem item)
+void IMenu::add_item(MenuItem item)
 {
     m_items.push_back(item);
 }
 
-std::size_t Menu::get_menu_selection()
+std::size_t IMenu::get_menu_selection()
 {
     return m_selected;
 }
 
-void Menu::select_next()
+void IMenu::select_next()
 {
     // circulate back
 	if (m_selected == m_items.size() - 1) {
@@ -50,7 +50,7 @@ void Menu::select_next()
 	++m_selected;
 }
 
-void Menu::select_prev()
+void IMenu::select_prev()
 {
     // circulate to last
 	if (m_selected == 0) {
@@ -60,13 +60,12 @@ void Menu::select_prev()
 	--m_selected;
 }
 
-const std::vector<MenuItem>& Menu::get_items() const
+const std::vector<MenuItem>& IMenu::get_items() const
 {
     return m_items;
 }
 
-void Menu::set_item_value(std::size_t idx, int val)
+void IMenu::set_item_value(std::size_t idx, int val)
 {
     m_items[idx].value = val;
 }
-
