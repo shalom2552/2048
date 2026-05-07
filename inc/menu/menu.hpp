@@ -47,13 +47,12 @@ protected:
     /* Lets the derived class an option to implement left key */
     virtual void handle_left() {}
 
-protected:
-    std::vector<MenuItem> m_items;
-    std::size_t m_selected      = 0;
-    std::size_t m_items_count   = 0;
-
 private:
     bool m_in_menu = true;
+
+protected:
+    std::vector<MenuItem> m_items;
+    std::size_t m_selected = 0;
 };
 
 #endif // !MENU_MENU_HPP

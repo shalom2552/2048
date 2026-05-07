@@ -33,7 +33,6 @@ void Menu::exit_menu()
 void Menu::add_item(MenuItem item)
 {
     m_items.push_back(item);
-    ++m_items_count;
 }
 
 std::size_t Menu::get_menu_selection()
@@ -44,7 +43,7 @@ std::size_t Menu::get_menu_selection()
 void Menu::select_next()
 {
     // circulate back
-	if (m_selected == m_items_count - 1) {
+	if (m_selected == m_items.size() - 1) {
 		m_selected = 0;
 		return;
 	}
@@ -55,7 +54,7 @@ void Menu::select_prev()
 {
     // circulate to last
 	if (m_selected == 0) {
-		m_selected = m_items_count - 1;
+		m_selected = m_items.size() - 1;
         return;
 	}
 	--m_selected;
