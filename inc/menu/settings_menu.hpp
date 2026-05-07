@@ -30,11 +30,6 @@ public:
     /* update the board size value by the given value */
     void update_board_size(int value);
 
-    /* store the selected board size */
-    void save_board_size();
-
-private:
-    int m_board_size = 4;
 };
 
 #endif // !MENU_SETTINGS_MENU_HPP

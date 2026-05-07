@@ -5,7 +5,6 @@
 #include <cstddef>
 
 SettingsMenu::SettingsMenu(GameSettings const& settings)
-    : m_board_size(settings.board_size)
 {
     add_item(MenuItem{SM_BOARD_SIZE, "Board size", settings.board_size});
     add_item(MenuItem{SM_BACK, "Back"});
@@ -18,14 +17,14 @@ void SettingsMenu::display()
 
 void SettingsMenu::get_settings(GameSettings& settings)
 {
-    settings.board_size = m_board_size;
+    settings.board_size = m_items[SM_BOARD_SIZE].value;
 }
 
 void SettingsMenu::handle_select()
 {
     std::size_t selection = get_menu_selection();
     switch (selection) {
-        case SM_BOARD_SIZE: save_board_size(); break;
+        case SM_BOARD_SIZE:
         case SM_BACK: exit_menu(); break;
         default: return;
     }
@@ -53,18 +52,13 @@ void SettingsMenu::update_setting_value(int value)
 
 void SettingsMenu::update_board_size(int value)
 {
-    m_board_size += value;
-    if (m_board_size > MAX_BOARD_SIZE) {
-        m_board_size = MAX_BOARD_SIZE;
+    int board_size = m_items[SM_BOARD_SIZE].value + value;
+    if (board_size > MAX_BOARD_SIZE) {
+        board_size = MAX_BOARD_SIZE;
     }
-    if (m_board_size < MIN_BOARD_SIZE) {
-        m_board_size = MIN_BOARD_SIZE;
+    if (board_size < MIN_BOARD_SIZE) {
+        board_size = MIN_BOARD_SIZE;
     }
-    m_items[SM_BOARD_SIZE].value = m_board_size;
+    m_items[SM_BOARD_SIZE].value = board_size;
 }
 
-void SettingsMenu::save_board_size()
-{
-    m_board_size = m_items[SM_BOARD_SIZE].value;
-    exit_menu();
-}
