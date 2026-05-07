@@ -13,6 +13,7 @@
 class Menu {
 public:
     Menu() = default;
+    virtual ~Menu() = default;
 
     /* Display and get user selection from the items list */
     void run_menu();
