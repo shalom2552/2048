@@ -2,7 +2,7 @@
 #define MENU_I_MENU_HPP
 
 #include "../types.hpp"    // MenuItem
-#include "../display/i_menu_renderer.hpp"
+#include "../display/menu_renderer.hpp"
 
 #include <cstddef>      // std::size_t
 #include <memory>       // std::unique_ptr
@@ -52,7 +52,7 @@ protected:
     void set_item_value(std::size_t idx, int val);
 
 protected:
-    std::unique_ptr<IMenuRenderer> m_renderer;
+    std::unique_ptr<MenuRenderer> m_renderer;
 private:
     bool m_in_menu = true;
     std::vector<MenuItem> m_items;

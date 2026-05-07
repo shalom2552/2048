@@ -1,5 +1,5 @@
 #include "../../inc/menu/settings_menu.hpp"
-#include "../../inc/display/sm_renderer.hpp"
+#include "../../inc/display/menu_renderer.hpp"
 #include "../../inc/constants.hpp"
 
 #include <cstddef>
@@ -7,7 +7,7 @@
 
 SettingsMenu::SettingsMenu(GameSettings const& settings)
 {
-    m_renderer = std::make_unique<SettingsMenuRenderer>(SettingsMenuRenderer());
+    m_renderer = std::make_unique<MenuRenderer>(MenuRenderer());
     add_item(MenuItem{SM_BOARD_SIZE, "Board size", settings.board_size});
     add_item(MenuItem{SM_BACK, "Back"});
 }
@@ -19,7 +19,7 @@ void SettingsMenu::display()
 
 void SettingsMenu::get_settings(GameSettings& settings)
 {
-    settings.board_size = get_items()[SM_BOARD_SIZE].value;
+    settings.board_size = get_items()[SM_BOARD_SIZE].value.value_or(4);
 }
 
 void SettingsMenu::handle_select()
@@ -54,7 +54,7 @@ void SettingsMenu::update_setting_value(int val)
 
 void SettingsMenu::update_board_size(int val)
 {
-    int board_size = val + get_items()[SM_BOARD_SIZE].value;
+    int board_size = val + get_items()[SM_BOARD_SIZE].value.value_or(4);
     if (board_size > MAX_BOARD_SIZE) {
         board_size = MAX_BOARD_SIZE;
     }

@@ -1,23 +1,23 @@
-#ifndef I_MENU_RENDERER_HPP
-#define I_MENU_RENDERER_HPP
+#ifndef MENU_RENDERER_HPP
+#define MENU_RENDERER_HPP
 
 #include "../types.hpp"     // MenuItem
 
 #include <vector>           // std::vector
 #include <cstddef>          // std::size_t
 
-class IMenuRenderer {
+class MenuRenderer {
 public:
-    IMenuRenderer() = default;
-    virtual ~IMenuRenderer() = default;
+    MenuRenderer() = default;
+    virtual ~MenuRenderer() = default;
 
     /* Render single item on the menu */
-    virtual void render_item(MenuItem item) = 0;
+    void render_item(MenuItem item);
 
     /* print the menu to the screen with the selected highlited */
     void render_menu(std::vector<MenuItem> const& items, std::size_t selected);
 
 };
 
-#endif // !I_MENU_RENDERER_HPP
+#endif // !MENU_RENDERER_HPP
 

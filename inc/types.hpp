@@ -1,6 +1,7 @@
 #ifndef TYPES_HPP
 #define TYPES_HPP
 
+#include <optional>
 #include <string>   // std::string
 
 using Ansi = std::string;
@@ -14,7 +15,7 @@ struct GameSettings {
 struct MenuItem {
     const int id;
     std::string title;
-    int value = -1;
+    std::optional<int> value;
 };
 
 /* User input options */

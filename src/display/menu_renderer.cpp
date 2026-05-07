@@ -1,4 +1,4 @@
-#include "../../inc/display/i_menu_renderer.hpp"
+#include "../../inc/display/menu_renderer.hpp"
 #include "../../inc/display/common_display.hpp"
 
 #include "../../inc/constants.hpp"
@@ -9,7 +9,7 @@
 #include <cstddef>          // std::size_t
 
 
-void IMenuRenderer::render_menu(std::vector<MenuItem> const& items, std::size_t selected)
+void MenuRenderer::render_menu(std::vector<MenuItem> const& items, std::size_t selected)
 {
     clear_screen();
     print_header();
@@ -29,3 +29,14 @@ void IMenuRenderer::render_menu(std::vector<MenuItem> const& items, std::size_t 
     print_footer();
 }
 
+void MenuRenderer::render_item(MenuItem item)
+{
+    print_char(item.title);
+    print_char(ANSI_COLOR_RESET);
+    if (item.value.has_value()) {
+        print_char("\t< ");
+        print_char(std::to_string(item.value.value()));
+        print_char(" >");
+    }
+    print_line("");
+}

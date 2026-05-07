@@ -1,6 +1,6 @@
 #include "../../inc/menu/main_menu.hpp"
 #include "../../inc/menu/settings_menu.hpp"
-#include "../../inc/display/mm_renderer.hpp"
+#include "../../inc/display/menu_renderer.hpp"
 #include "../../inc/display/common_display.hpp"
 #include "../../inc/terminal.hpp"
 #include "../../inc/types.hpp"
@@ -12,7 +12,7 @@
 
 MainMenu::MainMenu()
 {
-    m_renderer = std::make_unique<MainMenuRenderer>(MainMenuRenderer());
+    m_renderer = std::make_unique<MenuRenderer>(MenuRenderer());
     add_item(MenuItem{MM_START, "Start"});
     add_item(MenuItem{MM_SETTINGS, "Settings"});
     add_item(MenuItem{MM_HELP, "Help"});
