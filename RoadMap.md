@@ -27,7 +27,7 @@
 ## Low
 
 - [x] **#10** `std::unique_ptr<Board>` → value member — `inc/game.hpp`
-- [ ] **#11** `rand()` without seed → replace with `<random>` / `std::mt19937` — `src/board.cpp`
+- [x] **#11** `rand()` without seed → replace with `<random>` / `std::mt19937` — `src/board.cpp`
 - [ ] **#12** `save_board_size()` is dead code — remove, call `exit_menu()` directly — `src/menu/settings_menu.cpp`
 - [ ] **#14** `MenuItem` id field — document or strengthen type safety — `inc/types.hpp`
 - [ ] **#17** `print_padding` / `print_left_padding` duplication — unify — `src/display/common_display.cpp`

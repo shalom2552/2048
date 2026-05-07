@@ -3,6 +3,7 @@
 #include <algorithm>    // std::reverse
 #include <cstddef>      // std::size_t
 #include <vector>       // std::vector
+#include <random>       // std::mt19937
 
 Board::Board(std::size_t size)
     : m_size(size)
@@ -42,10 +43,13 @@ std::size_t Board::count_empty_cells() const
 void Board::generate_new_cell()
 {
     std::size_t count = count_empty_cells();
-    if (count == 0) return;
+    if (count == 0) {
+        return;
+    }
 
-    int random_cell = rand() % count;
-    place_empty_cell(random_cell);
+    static std::mt19937 rng{std::random_device{}()};
+    std::uniform_int_distribution<std::size_t> dist(0, count - 1);
+    place_empty_cell(dist(rng));
 }
 
 void Board::place_empty_cell(std::size_t i)
