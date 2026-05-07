@@ -125,7 +125,7 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
 
     std::vector<int> result(m_size, 0);
     std::size_t write = 0;
-    bool merged = false;    // so we dont merge merged
+    bool merged = false;    // so we dont double merge
 
     for (int row = 0; row < (int)m_size; ++row) {
         int value = line[row];
@@ -137,6 +137,7 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
 
         } else if ( !merged && value == result[write - 1] ) {
             result[write - 1] += value;
+            merged = true;
 
         } else {
             result[write++] = value;
