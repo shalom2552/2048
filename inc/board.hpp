@@ -22,7 +22,7 @@ public:
     [[nodiscard]] const std::vector<std::vector<Cell>>& get_board() const;
 
     /* return the sum of all cells */
-    [[nodiscard]] unsigned int get_score();
+    [[nodiscard]] unsigned int get_score() const;
 
     /* return the number of empty cells in the board */
     [[nodiscard]] std::size_t count_empty_cells() const;
@@ -31,13 +31,13 @@ public:
     void generate_new_cell();
 
     /* return true if there is a valid move or false otherwise */
-    [[nodiscard]] bool has_valid_move();
+    [[nodiscard]] bool has_valid_move() const;
 
     /* collase all lines acording to the input direction */
     void collapse_move(Direction dir);
 
     /* return true if last move changed the board */
-    [[nodiscard]] bool changed();
+    [[nodiscard]] bool changed() const;
 
 private:
 

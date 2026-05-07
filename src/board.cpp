@@ -21,7 +21,7 @@ const std::vector<std::vector<Cell>>& Board::get_board() const
     return m_board;
 }
 
-unsigned int Board::get_score()
+unsigned int Board::get_score() const
 {
     unsigned int score = 0;
     for (std::size_t row = 0; row < m_size; ++row) {
@@ -69,7 +69,7 @@ void Board::place_empty_cell(std::size_t i)
     }
 }
 
-bool Board::has_valid_move()
+bool Board::has_valid_move() const
 {
     if (count_empty_cells() > 0) return true;
 
@@ -156,7 +156,7 @@ void Board::collapse_line(std::vector<int>& line, bool forward)
     line = result;
 }
 
-bool Board::changed()
+bool Board::changed() const
 {
     return m_changed;
 }
