@@ -7,16 +7,16 @@
 #include "../../inc/game.hpp"
 
 #include <cstddef>      // std::size_t
-#include <cstdlib>      // exit
 #include <memory>       // std::make_unique
+#include <optional>     // std::nullopt
 
 MainMenu::MainMenu()
 {
     m_renderer = std::make_unique<MenuRenderer>(MenuRenderer());
-    add_item(MenuItem{MM_START, "Start"});
-    add_item(MenuItem{MM_SETTINGS, "Settings"});
-    add_item(MenuItem{MM_HELP, "Help"});
-    add_item(MenuItem{MM_QUIT, "Quit"});
+    add_item(MenuItem{MM_START, "Start", std::nullopt});
+    add_item(MenuItem{MM_SETTINGS, "Settings", std::nullopt});
+    add_item(MenuItem{MM_HELP, "Help", std::nullopt});
+    add_item(MenuItem{MM_QUIT, "Quit", std::nullopt});
 }
 
 void MainMenu::handle_select()

@@ -2,14 +2,14 @@
 #include "../../inc/display/menu_renderer.hpp"
 #include "../../inc/constants.hpp"
 
-#include <cstddef>
-#include <memory>
+#include <cstddef>      // std::size_t
+#include <optional>     // std::nullopt
 
 SettingsMenu::SettingsMenu(GameSettings const& settings)
 {
     m_renderer = std::make_unique<MenuRenderer>(MenuRenderer());
     add_item(MenuItem{SM_BOARD_SIZE, "Board size", settings.board_size});
-    add_item(MenuItem{SM_BACK, "Back"});
+    add_item(MenuItem{SM_BACK, "Back", std::nullopt});
 }
 
 void SettingsMenu::display()
