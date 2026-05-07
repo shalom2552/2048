@@ -1,12 +1,11 @@
-#include "inc/input.hpp"
+#include "inc/terminal.hpp"
 #include "inc/menu/main_menu.hpp"
 
 int main () {
-    input_setup();
+    Terminal terminal;
 
     MainMenu main_menu;
     main_menu.run_menu();
 
-    cleanup();
     return 0;
 }

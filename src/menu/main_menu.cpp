@@ -1,7 +1,7 @@
 #include "../../inc/menu/main_menu.hpp"
 #include "../../inc/menu/settings_menu.hpp"
 #include "../../inc/display/menu_display.hpp"
-#include "../../inc/input.hpp"
+#include "../../inc/terminal.hpp"
 #include "../../inc/types.hpp"
 #include "../../inc/game.hpp"
 
@@ -45,6 +45,6 @@ void MainMenu::run_settings()
 void MainMenu::help()
 {
     display_help();
-    get_input();
+    Terminal::get_input();
 }
 

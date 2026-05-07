@@ -1,5 +1,5 @@
 #include "../../inc/menu/menu.hpp"
-#include "../../inc/input.hpp"
+#include "../../inc/terminal.hpp"
 #include "../../inc/display/menu_display.hpp"
 
 void Menu::run_menu()
@@ -7,7 +7,7 @@ void Menu::run_menu()
     while (m_in_menu) {
         display();
 
-        InputEvent input = get_input();
+        InputEvent input = Terminal::get_input();
         switch (input) {
             case InputEvent::DOWN: select_next(); break;
             case InputEvent::UP: select_prev(); break;

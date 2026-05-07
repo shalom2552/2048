@@ -1,6 +1,6 @@
 #include "../inc/game.hpp"
 #include "../inc/types.hpp"
-#include "../inc/input.hpp"
+#include "../inc/terminal.hpp"
 #include "../inc/display/board_display.hpp"
 #include "../inc/display/common_display.hpp"
 
@@ -21,7 +21,7 @@ void Game::run()
     render_game();
 
     while (m_running) {
-        InputEvent input = get_input();
+        InputEvent input = Terminal::get_input();
         handle_input(input);
 
         // skip if no board change
