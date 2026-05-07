@@ -5,10 +5,9 @@
 #include "../inc/display/common_display.hpp"
 
 #include <iostream>     // std::cout
-#include <memory>       // std::make_unique
 
 Game::Game(GameSettings settings)
-    : m_board(std::make_unique<Board>(settings.board_size))
+    : m_board(Board(settings.board_size))
     , m_running(true)
     , m_score(0)
     , m_moves(0)
@@ -17,7 +16,7 @@ Game::Game(GameSettings settings)
 
 void Game::run()
 {
-    m_board->generate_new_cell();
+    m_board.generate_new_cell();
     render_game();
 
     while (m_running) {
@@ -25,8 +24,8 @@ void Game::run()
         handle_input(input);
 
         // skip if no board change
-        if (m_board->changed()){
-            m_board->generate_new_cell();
+        if (m_board.changed()){
+            m_board.generate_new_cell();
             update_score();
             render_game();
             if (is_game_over()) handle_game_over();
@@ -58,20 +57,20 @@ void Game::handle_input(InputEvent input)
 
 void Game::handle_move(Direction dir)
 {
-    m_board->collapse_move(dir);
+    m_board.collapse_move(dir);
 }
 
 void Game::update_score()
 {
     ++m_moves;
-    m_score = m_board->get_score();
+    m_score = m_board.get_score();
 }
 
 void Game::render_game()
 {
     clear_screen();
     print_header();
-    print_board(*m_board);
+    print_board(m_board);
     print_score(m_score, m_moves);
     print_footer();
 }
@@ -84,7 +83,7 @@ void Game::handle_quit()
 
 bool Game::is_game_over()
 {
-    return !m_board->has_valid_move();
+    return !m_board.has_valid_move();
 }
 
 void Game::handle_game_over()

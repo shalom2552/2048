@@ -4,8 +4,6 @@
 #include "board.hpp"
 #include "types.hpp"
 
-#include <memory>       // std::unique_ptr
-
 class Game {
 public:
     explicit Game(GameSettings settings);
@@ -42,8 +40,7 @@ private:
     void end_game();
 
 private:
-    std::unique_ptr<Board> m_board;
-
+    Board m_board;
     bool m_running;
     unsigned int m_score;
     unsigned int m_moves;
