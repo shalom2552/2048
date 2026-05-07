@@ -34,7 +34,7 @@ public:
     bool has_valid_move();
 
     /* collase all lines acording to the input direction */
-    void collapse_move(InputEvent);
+    void collapse_move(Direction dir);
 
     /* return true if last move changed the board */
     bool changed();

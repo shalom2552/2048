@@ -27,6 +27,15 @@ enum class InputEvent {
     QUIT,
 };
 
+/* Board direction */
+enum class Direction {
+
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT,
+};
+
 /* Main menu options */
 enum MainMenuOptions {
     MM_START,

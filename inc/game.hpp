@@ -21,7 +21,7 @@ private:
     void handle_input(InputEvent input);
 
     /* update the board based on the user move */
-    void handle_move(InputEvent driection);
+    void handle_move(Direction dir);
 
     /* call end game */
     void handle_quit();

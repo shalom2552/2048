@@ -38,10 +38,16 @@ void Game::handle_input(InputEvent input)
 {
     switch (input) {
         case InputEvent::UP:
+            handle_move(Direction::UP);
+            break;
         case InputEvent::DOWN:
+            handle_move(Direction::DOWN);
+            break;
         case InputEvent::RIGHT:
+            handle_move(Direction::RIGHT);
+            break;
         case InputEvent::LEFT:
-            handle_move(input);
+            handle_move(Direction::LEFT);
             break;
         case InputEvent::QUIT:
             handle_quit();
@@ -50,9 +56,9 @@ void Game::handle_input(InputEvent input)
     }
 }
 
-void Game::handle_move(InputEvent direction)
+void Game::handle_move(Direction dir)
 {
-    m_board->collapse_move(direction);
+    m_board->collapse_move(dir);
 }
 
 void Game::update_score()
