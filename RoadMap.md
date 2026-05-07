@@ -13,7 +13,7 @@
 - [x] **Signal** `handle_sigint` calls `exit(0)` — destructor never runs; fix with `restore_terminal()` + re-raise
 - [x] **#8** `m_items` in `Menu` should be `private` with protected accessor — `inc/menu/menu.hpp`
 - [x] **#19** `merged` flag never set `true` in `collapse_line` — double-merge prevention broken, `src/board.cpp`
-- [ ] **Display** `IMenuRenderer` interface — replace `display_menu` / `display_settings_menu` duplication
+- [x] **Display** `IMenuRenderer` interface — replace `display_menu` / `display_settings_menu` duplication
 
 ## Medium
 

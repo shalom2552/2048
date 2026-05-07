@@ -2,8 +2,10 @@
 #define MENU_I_MENU_HPP
 
 #include "../types.hpp"    // MenuItem
+#include "../display/i_menu_renderer.hpp"
 
 #include <cstddef>      // std::size_t
+#include <memory>       // std::unique_ptr
 #include <vector>       // std::vector
 
 class IMenu {
@@ -49,6 +51,8 @@ protected:
     /* Set menu item value for left / right */
     void set_item_value(std::size_t idx, int val);
 
+protected:
+    std::unique_ptr<IMenuRenderer> m_renderer;
 private:
     bool m_in_menu = true;
     std::vector<MenuItem> m_items;

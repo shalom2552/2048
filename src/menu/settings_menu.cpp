@@ -1,18 +1,20 @@
 #include "../../inc/menu/settings_menu.hpp"
-#include "../../inc/display/menu_display.hpp"
+#include "../../inc/display/sm_renderer.hpp"
 #include "../../inc/constants.hpp"
 
 #include <cstddef>
+#include <memory>
 
 SettingsMenu::SettingsMenu(GameSettings const& settings)
 {
+    m_renderer = std::make_unique<SettingsMenuRenderer>(SettingsMenuRenderer());
     add_item(MenuItem{SM_BOARD_SIZE, "Board size", settings.board_size});
     add_item(MenuItem{SM_BACK, "Back"});
 }
 
 void SettingsMenu::display()
 {
-    display_settings_menu(get_items(), get_menu_selection());
+    m_renderer->render_menu(get_items(), get_menu_selection());
 }
 
 void SettingsMenu::get_settings(GameSettings& settings)

@@ -1,6 +1,5 @@
 #include "../../inc/menu/i_menu.hpp"
 #include "../../inc/terminal.hpp"
-#include "../../inc/display/menu_display.hpp"
 
 void IMenu::run_menu()
 {
@@ -22,7 +21,7 @@ void IMenu::run_menu()
 
 void IMenu::display()
 {
-    display_menu(get_items(), m_selected);
+    m_renderer->render_menu(get_items(), m_selected);
 }
 
 void IMenu::exit_menu()
