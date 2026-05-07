@@ -1,6 +1,8 @@
 #ifndef TYPES_HPP
 #define TYPES_HPP
 
+#include "../inc/constants.hpp"
+
 #include <optional>
 #include <string>   // std::string
 
@@ -8,7 +10,7 @@ using Ansi = std::string;
 
 /* Game settings */
 struct GameSettings {
-    int board_size = 4;
+    int board_size = DEFAULT_BOARD_SIZE;
 };
 
 /* Menu items struct */

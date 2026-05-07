@@ -22,7 +22,7 @@
 - [x] **#7** `const` missing on Board query methods (`get_score`, `changed`, `has_valid_move`) — `inc/board.hpp`
 - [x] **#9** Remove redundant `m_items_count` — use `m_items.size()` — `inc/menu/menu.hpp`
 - [x] **#13** `MenuItem::value = -1` sentinel → `std::optional<int>` — `inc/types.hpp`
-- [ ] **#15** `GameSettings` has no validation — add bounds check for `board_size`
+- [x] **#15** `GameSettings` has no validation — add bounds check for `board_size`
 
 ## Low
 

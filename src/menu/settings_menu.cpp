@@ -19,7 +19,7 @@ void SettingsMenu::display()
 
 void SettingsMenu::get_settings(GameSettings& settings)
 {
-    settings.board_size = get_items()[SM_BOARD_SIZE].value.value_or(4);
+    settings.board_size = get_items()[SM_BOARD_SIZE].value.value_or(DEFAULT_BOARD_SIZE);
 }
 
 void SettingsMenu::handle_select()
@@ -54,7 +54,7 @@ void SettingsMenu::update_setting_value(int val)
 
 void SettingsMenu::update_board_size(int val)
 {
-    int board_size = val + get_items()[SM_BOARD_SIZE].value.value_or(4);
+    int board_size = val + get_items()[SM_BOARD_SIZE].value.value_or(DEFAULT_BOARD_SIZE);
     if (board_size > MAX_BOARD_SIZE) {
         board_size = MAX_BOARD_SIZE;
     }
