@@ -16,28 +16,28 @@ public:
     explicit Board(std::size_t size);
 
     /* return the size of the board (#rows * #cols) */
-    std::size_t size() const;
+    [[nodiscard]] std::size_t size() const;
 
     /* return a const reference of the board */
-    const std::vector<std::vector<Cell>>& get_board() const;
+    [[nodiscard]] const std::vector<std::vector<Cell>>& get_board() const;
 
     /* return the sum of all cells */
-    unsigned int get_score();
+    [[nodiscard]] unsigned int get_score();
 
     /* return the number of empty cells in the board */
-    std::size_t count_empty_cells() const;
+    [[nodiscard]] std::size_t count_empty_cells() const;
 
     /* adds a value new value to a random empty cell */
     void generate_new_cell();
 
     /* return true if there is a valid move or false otherwise */
-    bool has_valid_move();
+    [[nodiscard]] bool has_valid_move();
 
     /* collase all lines acording to the input direction */
     void collapse_move(Direction dir);
 
     /* return true if last move changed the board */
-    bool changed();
+    [[nodiscard]] bool changed();
 
 private:
 

@@ -17,7 +17,7 @@
 
 ## Medium
 
-- [ ] **#5** `[[nodiscard]]` missing on getters — `inc/board.hpp`, `inc/menu/menu.hpp`
+- [x] **#5** `[[nodiscard]]` missing on getters — `inc/board.hpp`, `inc/menu/menu.hpp`
 - [ ] **#6** `explicit` missing on single-arg constructors — `inc/game.hpp`, `inc/menu/settings_menu.hpp`
 - [ ] **#7** `const` missing on Board query methods (`get_score`, `changed`, `has_valid_move`) — `inc/board.hpp`
 - [ ] **#9** Remove redundant `m_items_count` — use `m_items.size()` — `inc/menu/menu.hpp`

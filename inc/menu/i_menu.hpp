@@ -17,7 +17,7 @@ public:
     void run_menu();
 
     /* Return the selected option */
-    std::size_t get_menu_selection();
+    [[nodiscard]] std::size_t get_menu_selection();
 
     /* stop the menu */
     void exit_menu();
@@ -46,7 +46,7 @@ protected:
     virtual void handle_left() {}
 
     /* Get const list of the items to print */
-    const std::vector<MenuItem>& get_items() const;
+    [[nodiscard]] const std::vector<MenuItem>& get_items() const;
 
     /* Set menu item value for left / right */
     void set_item_value(std::size_t idx, int val);
