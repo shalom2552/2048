@@ -8,7 +8,7 @@
 
 class Game {
 public:
-    Game(GameSettings settings);
+    explicit Game(GameSettings settings);
 
     /* main game loop */
     void run();

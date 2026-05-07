@@ -8,6 +8,7 @@
 
 class IMenuRenderer {
 public:
+    IMenuRenderer() = default;
     virtual ~IMenuRenderer() = default;
 
     /* Render single item on the menu */

@@ -7,7 +7,7 @@
 class SettingsMenu : public IMenu {
 public:
     /* constracts the menu with its items */
-    SettingsMenu(GameSettings const& settings);
+    explicit SettingsMenu(GameSettings const& settings);
 
     /* display the menu as changeable values */
     void display() override;
