@@ -9,12 +9,12 @@ void Menu::run_menu()
 
         InputEvent input = get_input();
         switch (input) {
-            case INPUT_DOWN: select_next(); break;
-            case INPUT_UP: select_prev(); break;
-            case INPUT_LEFT: handle_left(); break;
-            case INPUT_RIGHT: handle_right(); break;
-            case INPUT_QUIT: exit(0);
-            case INPUT_SELECT: handle_select();
+            case InputEvent::DOWN: select_next(); break;
+            case InputEvent::UP: select_prev(); break;
+            case InputEvent::LEFT: handle_left(); break;
+            case InputEvent::RIGHT: handle_right(); break;
+            case InputEvent::QUIT: exit(0);
+            case InputEvent::SELECT: handle_select();
             default: break;
         }
     }

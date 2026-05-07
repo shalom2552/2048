@@ -86,8 +86,8 @@ bool Board::has_valid_move()
 void Board::collapse_move(InputEvent direction)
 {
     m_changed = false;
-    bool is_row = (direction == INPUT_RIGHT || direction == INPUT_LEFT);
-    bool forward = (direction == INPUT_LEFT || direction == INPUT_UP);
+    bool is_row = (direction == InputEvent::RIGHT || direction == InputEvent::LEFT);
+    bool forward = (direction == InputEvent::LEFT || direction == InputEvent::UP);
 
     for (std::size_t index = 0; index < m_size; ++index) {
         auto line = extract_line(index, is_row);

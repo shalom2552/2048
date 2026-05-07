@@ -37,13 +37,13 @@ void Game::run()
 void Game::handle_input(InputEvent input)
 {
     switch (input) {
-        case INPUT_UP:
-        case INPUT_DOWN:
-        case INPUT_RIGHT:
-        case INPUT_LEFT:
+        case InputEvent::UP:
+        case InputEvent::DOWN:
+        case InputEvent::RIGHT:
+        case InputEvent::LEFT:
             handle_move(input);
             break;
-        case INPUT_QUIT:
+        case InputEvent::QUIT:
             handle_quit();
             break;
         default: break;

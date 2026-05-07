@@ -43,12 +43,12 @@ InputEvent get_input()
     while (1) {
         if (read(STDIN_FILENO, &c, 1) != 1) continue;
         switch (c) {
-            case KEY_UP: return INPUT_UP;
-            case KEY_DOWN: return INPUT_DOWN;
-            case KEY_RIGHT: return INPUT_RIGHT;
-            case KEY_LEFT: return INPUT_LEFT;
-            case KEY_QUIT: return INPUT_QUIT;
-            case KEY_SELECT: return INPUT_SELECT;
+            case KEY_UP: return InputEvent::UP;
+            case KEY_DOWN: return InputEvent::DOWN;
+            case KEY_RIGHT: return InputEvent::RIGHT;
+            case KEY_LEFT: return InputEvent::LEFT;
+            case KEY_QUIT: return InputEvent::QUIT;
+            case KEY_SELECT: return InputEvent::SELECT;
         }
         // add arrows handler
         if (c == '\033') {
@@ -57,10 +57,10 @@ InputEvent get_input()
             read(STDIN_FILENO, &seq[1], 1);
             if (seq[0] == '[') {
                 switch (seq[1]) {
-                    case 'A': return INPUT_UP;
-                    case 'B': return INPUT_DOWN;
-                    case 'C': return INPUT_RIGHT;
-                    case 'D': return INPUT_LEFT;
+                    case 'A': return InputEvent::UP;
+                    case 'B': return InputEvent::DOWN;
+                    case 'C': return InputEvent::RIGHT;
+                    case 'D': return InputEvent::LEFT;
                 }
             }
         }

@@ -5,26 +5,29 @@
 
 using Ansi = std::string;
 
-/* user input options */
-enum InputEvent {
-    INPUT_UP,
-    INPUT_DOWN,
-    INPUT_RIGHT,
-    INPUT_LEFT,
-    INPUT_SELECT,
-    INPUT_QUIT,
-};
-
+/* Game settings */
 struct GameSettings {
     int board_size = 4;
 };
 
+/* Menu items struct */
 struct MenuItem {
     const int id;
     std::string title;
     int value = -1;
 };
 
+/* User input options */
+enum class InputEvent {
+    UP,
+    DOWN,
+    RIGHT,
+    LEFT,
+    SELECT,
+    QUIT,
+};
+
+/* Main menu options */
 enum MainMenuOptions {
     MM_START,
     MM_SETTINGS,
@@ -32,6 +35,7 @@ enum MainMenuOptions {
     MM_QUIT,
 };
 
+/* Settings menu options */
 enum SettingsMenuOptions {
     SM_BOARD_SIZE,
     SM_BACK,
